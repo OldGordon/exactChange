@@ -1,4 +1,4 @@
- function checkCashRegister(price, cash, cid) {
+function checkCashRegister(price, cash, cid) {
       var change = [],
           moneyBack = (cash - price) * 100,
           cents,
@@ -32,44 +32,45 @@
       for (var j = 0, k = cid.length ; j < k ; j++) { 
             cid[j][1] = cid[j][1].toFixed(2);
             cents = Math.ceil(cid[j][1] * 100);
-
-            if (cid[j][0] === "ONE HUNDRED"){
+            switch (cid[j][0]){
+              case "ONE HUNDRED":
                 index = 10000;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "TWENTY"){
+                break;
+              case "TWENTY":
                 index = 2000;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "TEN"){
+                break;
+              case "TEN":
                 index = 1000;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "FIVE"){
+                break;
+              case "FIVE":
                 index = 500;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "ONE"){
+                break;
+              case "ONE":
                 index = 100;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "QUARTER"){
+                break;
+              case "QUARTER":
                 index = 25;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "DIME"){
+                break;
+              case "DIME":
                 index = 10;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "NICKEL"){
+                break;
+              case "NICKEL":
                 index = 5;
                 giveChange(index, cid[j][0]);
-              
-            }else if (cid[j][0] === "PENNY"){
+                break;
+              case "PENNY":
                 index = 1;
                 giveChange(index, cid[j][0]);
+                break;
+              default:
             }
-           
           }
       if (moneyBack > 0)return "Insufficient Funds";
       return change;
